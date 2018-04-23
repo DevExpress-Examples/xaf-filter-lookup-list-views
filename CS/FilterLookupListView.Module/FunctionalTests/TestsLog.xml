@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<Tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Date="3/13/2014">
+  <Test Name="Test2" ApplicationName="FilterLookupListView.Web" Result="Passed" Elapsed="00:00:19.0271203" Started="3/13/2014 10:49:08 AM" MachineName="BELYAKOV-W8-NB" IP="172.22.1.138" />
+</Tests>
