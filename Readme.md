@@ -1,3 +1,10 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Accessory.cs](./CS/FilterLookupListView.Module/BusinessObjects/Accessory.cs) (VB: [Accessory.vb](./VB/FilterLookupListView.Module/BusinessObjects/Accessory.vb))
+* **[Order.cs](./CS/FilterLookupListView.Module/BusinessObjects/Order.cs) (VB: [Order.vb](./VB/FilterLookupListView.Module/BusinessObjects/Order.vb))**
+* [Product.cs](./CS/FilterLookupListView.Module/BusinessObjects/Product.cs) (VB: [Product.vb](./VB/FilterLookupListView.Module/BusinessObjects/Product.vb))
+<!-- default file list end -->
 # How to Filter Lookup List Views
 
 
