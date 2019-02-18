@@ -16,66 +16,50 @@ namespace FilterLookupListView.Module.DatabaseUpdate
         public Updater(IObjectSpace objectSpace, Version currentDBVersion) : base(objectSpace, currentDBVersion)
         {
         }
-        public override void UpdateDatabaseAfterUpdateSchema()
-        {
+        public override void UpdateDatabaseAfterUpdateSchema() {
             base.UpdateDatabaseAfterUpdateSchema();
-            Accessory accessory1 = ObjectSpace.FindObject<Accessory>(CriteriaOperator.Parse(
-      "AccessoryName == 'Canon Case Dcc-400'"));
-            if (accessory1 == null)
-            {
-                accessory1 = ObjectSpace.CreateObject<Accessory>();
-                accessory1.AccessoryName = "Canon Case Dcc-400";
-                accessory1.IsGlobal = false;
-                accessory1.Save();
-            }
-            Accessory accessory2 = ObjectSpace.FindObject<Accessory>(CriteriaOperator.Parse(
-   "AccessoryName == 'Canon Case Dcc-600'"));
-            if (accessory2 == null)
-            {
-                accessory2 = ObjectSpace.CreateObject<Accessory>();
-                accessory2.AccessoryName = "Canon Case Dcc-600";
-                accessory2.IsGlobal = false;
-                accessory2.Save();
-            }
-            Accessory accessory3 = ObjectSpace.FindObject<Accessory>(CriteriaOperator.Parse(
-   "AccessoryName == 'Digitex Secure Digital, 2Gb'"));
-            if (accessory3 == null)
-            {
-                accessory3 = ObjectSpace.CreateObject<Accessory>();
-                accessory3.AccessoryName = "Digitex Secure Digital, 2Gb";
-                accessory3.IsGlobal = true;
-                accessory3.Save();
-            }
-            Accessory accessory4 = ObjectSpace.FindObject<Accessory>(CriteriaOperator.Parse(
-   "AccessoryName == 'A-Data Secure Digital, 2Gb, Super'"));
-            if (accessory4 == null)
-            {
-                accessory4 = ObjectSpace.CreateObject<Accessory>();
-                accessory4.AccessoryName = "A-Data Secure Digital, 2Gb, Super";
-                accessory4.IsGlobal = true;
-                accessory4.Save();
-            }
+            Accessory accessory1 = EnsureAccessory("Canon Case Dcc-400", false);
+            Accessory accessory2 = EnsureAccessory("Canon Case Dcc-600", false);
+            Accessory accessory3 = EnsureAccessory("Digitex Secure Digital, 2Gb", true);
+            Accessory accessory4 = EnsureAccessory("A-Data Secure Digital, 2Gb, Super", true);
 
-            Product product1 = ObjectSpace.FindObject<Product>(CriteriaOperator.Parse(
-                "ProductName == 'Canon PowerShot G7'"));
-            if (product1 == null)
-            {
-                product1 = ObjectSpace.CreateObject<Product>();
-                product1.ProductName = "Canon PowerShot G7";
-                product1.Accessories.Add(accessory1);
-                product1.Accessories.Add(accessory2);
-                product1.Save();
-            }
-            Order order1 = ObjectSpace.FindObject<Order>(CriteriaOperator.Parse(
-                "OrderId == 10"));
-            if (order1 == null)
-            {
-                order1 = ObjectSpace.CreateObject<Order>();
-                order1.OrderId = 10;
-                order1.Product = product1;
-                order1.Save();
-            }
+            Product product1 = EnsureProduct("Canon PowerShot G7", accessory1, accessory2);
+
+            Order order1 = EnsureOrder(10, product1);
+
             ObjectSpace.CommitChanges();
+        }
+        private Accessory EnsureAccessory(string name, bool isGlobal) {
+            Accessory accessory = ObjectSpace.FindObject<Accessory>(CriteriaOperator.Parse("AccessoryName == ?", name));
+            if(accessory == null) {
+                accessory = ObjectSpace.CreateObject<Accessory>();
+                accessory.AccessoryName = name;
+                accessory.IsGlobal = isGlobal;
+                accessory.Save();
+            }
+            return accessory;
+        }
+        private Product EnsureProduct(string name, params Accessory[] accessories) {
+            Product product = ObjectSpace.FindObject<Product>(CriteriaOperator.Parse("ProductName == ?", name));
+            if(product == null) {
+                product = ObjectSpace.CreateObject<Product>();
+                product.ProductName = name;
+                foreach(Accessory accessory in accessories) {
+                    product.Accessories.Add(accessory);
+                }
+                product.Save();
+            }
+            return product;
+        }
+        private Order EnsureOrder(int orderId, Product product) {
+            Order order = ObjectSpace.FindObject<Order>(CriteriaOperator.Parse("OrderId == ?", orderId));
+            if(order == null) {
+                order = ObjectSpace.CreateObject<Order>();
+                order.OrderId = orderId;
+                order.Product = product;
+                order.Save();
+            }
+            return order;
         }
     }
 }
