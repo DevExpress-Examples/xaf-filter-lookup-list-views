@@ -7,7 +7,7 @@
 <!-- default file list end -->
 # How to Filter Lookup List Views
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e218)**
+**[[Run Online]](https://codecentral.devexpress.com/e218/)**
 <!-- run online end -->
 
 
