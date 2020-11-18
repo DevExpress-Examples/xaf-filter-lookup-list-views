@@ -40,22 +40,8 @@ Namespace FilterLookupListView.Web
 			Return dataStoreProvider
 		End Function
 		Private Sub FilterLookupListViewAspNetApplication_DatabaseVersionMismatch(ByVal sender As Object, ByVal e As DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs) Handles Me.DatabaseVersionMismatch
-#If EASYTEST Then
 			e.Updater.Update()
 			e.Handled = True
-#Else
-			If System.Diagnostics.Debugger.IsAttached Then
-				e.Updater.Update()
-				e.Handled = True
-			Else
-				Dim message As String = "The application cannot connect to the specified database, " & "because the database doesn't exist, its version is older " & "than that of the application or its schema does not match " & "the ORM data model structure. To avoid this error, use one " & "of the solutions from the https://www.devexpress.com/kb=T367835 KB Article."
-
-				If e.CompatibilityError IsNot Nothing AndAlso e.CompatibilityError.Exception IsNot Nothing Then
-					message &= vbCrLf & vbCrLf & "Inner exception: " & e.CompatibilityError.Exception.Message
-				End If
-				Throw New InvalidOperationException(message)
-			End If
-#End If
 		End Sub
 		Private Sub InitializeComponent()
 			Me.module1 = New DevExpress.ExpressApp.SystemModule.SystemModule()
