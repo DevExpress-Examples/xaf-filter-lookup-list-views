@@ -1,1 +1,1 @@
-<%@ Application Language="C#" CodeBehind="Global.asax.cs" Inherits="FilterLookupListView.Web.Global"%>
+﻿<%@ Application Language="C#" CodeBehind="Global.asax.cs" Inherits="FilterLookupListView.Web.Global"%>

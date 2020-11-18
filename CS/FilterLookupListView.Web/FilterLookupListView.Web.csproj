@@ -1,23 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F7008D77-8BA1-4F92-94EC-D21753FC3F02}</ProjectGuid>
+    <ProjectGuid>{E1ADEEB2-A3F0-433D-BCAE-FA4F8DCC82E6}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FilterLookupListView.Web</RootNamespace>
     <AssemblyName>FilterLookupListView.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileUpgradeFlags></FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation></UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
     <UseIISExpress>false</UseIISExpress>
-    <TargetFrameworkProfile />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,7 +28,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,56 +46,77 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.ExpressApp.ScriptRecorder.v15.2, Version=15.2.20.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.ExpressApp.ScriptRecorder.Web.v15.2, Version=15.2.20.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v15.2.Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Data.v15.2">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Images.v15.2">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Objects.v15.2">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.v15.2">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v15.2">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v15.2">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Validation.v15.2">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Web.v15.2">
+    <Reference Include="DevExpress.Data.v20.2">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v15.2">
+    <Reference Include="DevExpress.ExpressApp.Objects.v20.2">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.v15.2">
+    <Reference Include="DevExpress.ExpressApp.v20.2">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxThemes.v15.2">
+    <Reference Include="DevExpress.ExpressApp.Web.v20.2">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Office.v15.2.Core">
+    <Reference Include="DevExpress.ExpressApp.Xpo.v20.2">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v15.2.Core">
+    <Reference Include="DevExpress.Office.v20.2.Core">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Web.v15.2">
+    <Reference Include="DevExpress.Persistent.Base.v20.2">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v15.2">
+    <Reference Include="DevExpress.Persistent.BaseImpl.v20.2">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v20.2.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v20.2.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v20.2.Export">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v20.2">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v20.2">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.v20.2">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v20.2">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -104,6 +125,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Drawing">
@@ -115,6 +139,18 @@
     <Reference Include="System.Web">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Web.Mobile">
       <Private>False</Private>
     </Reference>
@@ -124,33 +160,16 @@
     <Reference Include="System.XML">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.asp" />
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Images\ButtonBkg.gif" />
-    <Content Include="Images\ExpressAppLogo.png" />
-    <Content Include="Images\FooterBkg.gif" />
-    <Content Include="Images\GridHeaderBkg.gif" />
-    <Content Include="Images\HeaderBkg.gif" />
-    <Content Include="Images\LayoutHeaderBkg.gif" />
-    <Content Include="Images\Progress.gif" />
-    <Content Include="Images\SelectedCenter.gif" />
-    <Content Include="Images\SelectedCenterWhite.gif" />
-    <Content Include="Images\SelectedLeft.gif" />
-    <Content Include="Images\SelectedLeftWhite.gif" />
-    <Content Include="Images\SelectedRight.gif" />
-    <Content Include="Images\SelectedRightWhite.gif" />
-    <Content Include="Images\SideBarRDCorner.gif" />
-    <Content Include="Images\SideBarRUCorner.gif" />
-    <Content Include="Images\TabContentBkg.gif" />
-    <Content Include="Images\UnSelectedCenter.gif" />
-    <Content Include="Images\UnSelectedLeft.gif" />
-    <Content Include="Images\UnSelectedRight.gif" />
+    <Content Include="Images\Logo.svg" />
     <Content Include="Login.aspx" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.designer.cs">
@@ -183,25 +202,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WebApplication.resx">
-      <DependentUpon>WebApplication.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Model.xafml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
   <ItemGroup>
-    <None Include="Images\ReadMe.txt" />
+    <Content Include="Model.Desktop.xafml" />
+    <Content Include="Model.Tablet.xafml" />
     <None Include="ReadMe.txt" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FilterLookupListView.Module.Web\FilterLookupListView.Module.Web.csproj">
+      <Project>{ff5c8ab8-bead-4012-8282-ab23bfd096de}</Project>
+      <Name>FilterLookupListView.Module.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FilterLookupListView.Module\FilterLookupListView.Module.csproj">
-      <Project>{251B550C-520E-498B-AFEF-8A09C7D43B85}</Project>
+      <Project>{ac37b475-5668-47d9-ab4d-09f592875d1b}</Project>
       <Name>FilterLookupListView.Module</Name>
     </ProjectReference>
   </ItemGroup>
@@ -227,10 +244,12 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2064</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl></IISUrl>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

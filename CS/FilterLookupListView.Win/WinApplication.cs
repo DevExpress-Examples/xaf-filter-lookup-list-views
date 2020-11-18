@@ -1,41 +1,51 @@
-using DevExpress.ExpressApp.Xpo;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using DevExpress.ExpressApp.Win;
-using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Win;
+using System.Collections.Generic;
+using DevExpress.ExpressApp.Updating;
+using DevExpress.ExpressApp.Win.Utils;
+using DevExpress.ExpressApp.Xpo;
 
 namespace FilterLookupListView.Win {
-   public partial class FilterLookupListViewWindowsFormsApplication : WinApplication {
-        protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
-            args.ObjectSpaceProvider = new XPObjectSpaceProvider(args.ConnectionString, args.Connection);
+    // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Win.WinApplication._members
+    public partial class FilterLookupListViewWindowsFormsApplication : WinApplication {
+        public FilterLookupListViewWindowsFormsApplication() {
+			InitializeComponent();
+			SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         }
-      public FilterLookupListViewWindowsFormsApplication() {
-         InitializeComponent();
-         DelayedViewItemsInitialization = true;
-      }
-
-      private void FilterLookupListViewWindowsFormsApplication_DatabaseVersionMismatch(object sender, DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs e) {
+        protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
+            args.ObjectSpaceProviders.Add(new XPObjectSpaceProvider(XPObjectSpaceProvider.GetDataStoreProvider(args.ConnectionString, args.Connection, true), false));
+            args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(TypesInfo, null));
+        }
+        private void FilterLookupListViewWindowsFormsApplication_CustomizeLanguagesList(object sender, CustomizeLanguagesListEventArgs e) {
+            string userLanguageName = System.Threading.Thread.CurrentThread.CurrentUICulture.Name;
+            if(userLanguageName != "en-US" && e.Languages.IndexOf(userLanguageName) == -1) {
+                e.Languages.Add(userLanguageName);
+            }
+        }
+        private void FilterLookupListViewWindowsFormsApplication_DatabaseVersionMismatch(object sender, DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs e) {
 #if EASYTEST
-			e.Updater.Update();
-			e.Handled = true;
-#else
-         if (System.Diagnostics.Debugger.IsAttached) {
             e.Updater.Update();
             e.Handled = true;
-         }
-         else {
-            throw new InvalidOperationException(
-               "The application cannot connect to the specified database, because the latter doesn't exist or its version is older than that of the application.\r\n" +
-               "This error occurred  because the automatic database update was disabled when the application was started without debugging.\r\n" +
-               "To avoid this error, you should either start the application under Visual Studio in debug mode, or modify the " +
-               "source code of the 'DatabaseVersionMismatch' event handler to enable automatic database update, " +
-               "or manually create a database using the 'DBUpdater' tool.\r\n" +
-               "Anyway, refer to the 'Update Application and Database Versions' help topic at http://www.devexpress.com/Help/?document=ExpressApp/CustomDocument2795.htm " +
-               "for more detailed information. If this doesn't help, please contact our Support Team at http://www.devexpress.com/Support/Center/");
-         }
+#else
+            if(System.Diagnostics.Debugger.IsAttached) {
+                e.Updater.Update();
+                e.Handled = true;
+            }
+            else {
+				string message = "The application cannot connect to the specified database, " +
+					"because the database doesn't exist, its version is older " +
+					"than that of the application or its schema does not match " +
+					"the ORM data model structure. To avoid this error, use one " +
+					"of the solutions from the https://www.devexpress.com/kb=T367835 KB Article.";
+
+				if(e.CompatibilityError != null && e.CompatibilityError.Exception != null) {
+					message += "\r\n\r\nInner exception: " + e.CompatibilityError.Exception.Message;
+				}
+				throw new InvalidOperationException(message);
+            }
 #endif
-      }
-   }
+        }
+    }
 }

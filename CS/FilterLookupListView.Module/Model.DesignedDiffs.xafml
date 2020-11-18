@@ -1,3 +1,5 @@
 ﻿<?xml version="1.0" ?>
-<Application Title="FilterLookupListView" Logo="ExpressAppLogo" />
-
+<Application Title="FilterLookupListView">
+  <Views>
+  </Views>
+</Application>

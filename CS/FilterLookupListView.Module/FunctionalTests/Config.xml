@@ -1,32 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" TestRunTimeLimit="3" >
+<Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" TestRunTimeLimit="3" EnableUpperCase="FilterLookupListView.Web">
 	<Applications>
 		<!-- Win -->
 		<Application
-			Name="FilterLookupListView.Win"
+			Name="FilterLookupListViewWin"
 			FileName="[WinAppBin]\FilterLookupListView.Win.exe"
 			AdapterAssemblyName="[WinAdapterAssemblyName]"
 			CommunicationPort="4100"/>
 		<!-- Web -->
 		<Application
-			Name="FilterLookupListView.Web"
+			Name="FilterLookupListViewWeb"
+			UseIISExpress="True"
 			Url="http://localhost:4030"
 			PhysicalPath="[WebAppBin]"
-			AdapterAssemblyName="[WebAdapterAssemblyName]"/>
+			AdapterAssemblyName="[WebAdapterAssemblyName]"
+			IgnoreCase="true"/>
 		<!-- For IIS -->
 		<!--Application
-			Name="FilterLookupListView.Web"
+			Name="FilterLookupListViewWeb"
 			Url="http://localhost/FilterLookupListView.Web/Default.aspx"
-			AdapterAssemblyName="[WebAdapterAssemblyName]"/-->
+			AdapterAssemblyName="[WebAdapterAssemblyName]"
+			IgnoreCase="true"/-->
 	</Applications>
 	<TestDatabases>
-		<Database xsi:type="TestMSSQLDatabase" Server="(local)" DBName="FilterLookupListViewEasyTest" />
+		<Database xsi:type="TestMSSQLDatabase" Server="(localdb)\mssqllocaldb" DBName="FilterLookupListViewEasyTest"/>
 	</TestDatabases>
 
 	<Aliases>
 		<Alias Name="DomainUserName" Value="%USERDOMAIN%\%USERNAME%" />
-		<Alias Name="WinAdapterAssemblyName" Value="DevExpress.ExpressApp.EasyTest.WinAdapter.v15.2, Version=15.2.20.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-		<Alias Name="WebAdapterAssemblyName" Value="DevExpress.ExpressApp.EasyTest.WebAdapter.v15.2, Version=15.2.20.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+		<Alias Name="WinAdapterAssemblyName" Value="DevExpress.ExpressApp.EasyTest.WinAdapter.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+		<Alias Name="WebAdapterAssemblyName" Value="DevExpress.ExpressApp.EasyTest.WebAdapter.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
 		<Alias Name="WinAppBin" Value="[ConfigPath]\..\..\FilterLookupListView.Win\Bin\EasyTest" />
 		<Alias Name="WebAppBin" Value="[ConfigPath]\..\..\FilterLookupListView.Web" />
 	</Aliases>

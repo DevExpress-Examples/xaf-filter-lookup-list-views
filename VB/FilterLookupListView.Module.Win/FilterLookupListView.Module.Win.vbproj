@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <RootNamespace></RootNamespace>
+        <Deterministic>False</Deterministic>
+        <OptionExplicit>On</OptionExplicit>
+        <OptionCompare>Binary</OptionCompare>
+        <OptionStrict>Off</OptionStrict>
+        <OptionInfer>On</OptionInfer>
+    </PropertyGroup>
+    <ItemGroup>
+      <Import Include="Microsoft.VisualBasic" />
+      <Import Include="System.Collections.Generic" />
+      <Import Include="System.Collections" />
+      <Import Include="System.Diagnostics" />
+      <Import Include="System" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="**\*.svg" />
+        <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+        <EmbeddedResource Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="DevExpress.WindowsDesktop.XAF.ExpressApp.Win" Version="20.2.3-ctp" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\FilterLookupListView.Module\FilterLookupListView.Module.vbproj" />
+    </ItemGroup>
+</Project>

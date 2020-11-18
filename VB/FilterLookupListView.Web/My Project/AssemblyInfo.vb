@@ -8,9 +8,9 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("FilterLookupListView.Web")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyConfiguration("")>
-<Assembly: AssemblyCompany("-")>
+<Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("FilterLookupListView.Web")>
-<Assembly: AssemblyCopyright("Copyright © - 2008")>
+<Assembly: AssemblyCopyright("Copyright © 2020")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: AssemblyCulture("")>
 
@@ -20,7 +20,7 @@ Imports System.Runtime.InteropServices
 <Assembly: ComVisible(False)>
 
 ' The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("3d5900ae-111a-45be-96b3-d9e4606ca793")>
+<Assembly: Guid("720e2161-0047-4cfe-a68c-433063a3ae53")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -29,7 +29,5 @@ Imports System.Runtime.InteropServices
 '      Build Number
 '      Revision
 '
-' You can specify all the values or you can default the Revision and Build Numbers 
-' by using the '*' as shown below:
 <Assembly: AssemblyVersion("1.0.0.0")>
 <Assembly: AssemblyFileVersion("1.0.0.0")>
