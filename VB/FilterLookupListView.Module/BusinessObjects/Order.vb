@@ -12,31 +12,28 @@ Namespace FilterLookupListView.Module.BusinessObjects
 		Public Sub New(ByVal session As Session)
 			MyBase.New(session)
 		End Sub
-'INSTANT VB NOTE: The field orderId was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private orderId_Renamed As Integer
+		Private _orderId As Integer
 		Public Property OrderId() As Integer
 			Get
-				Return orderId_Renamed
+				Return _orderId
 			End Get
 			Set(ByVal value As Integer)
-				SetPropertyValue(NameOf(OrderId), orderId_Renamed, value)
+				SetPropertyValue(NameOf(OrderId), _orderId, value)
 			End Set
 		End Property
-'INSTANT VB NOTE: The field product was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private product_Renamed As Product
+		Private _product As Product
 		Public Property Product() As Product
 			Get
-				Return product_Renamed
+				Return _product
 			End Get
 			Set(ByVal value As Product)
-				SetPropertyValue(NameOf(Product), product_Renamed, value)
+				SetPropertyValue(NameOf(Product), _product, value)
 				'Scenario 4 - Custom Lookup Property Data Source
 				' Refresh the Accessory Property data source 
 				RefreshAvailableAccessories()
 			End Set
 		End Property
-'INSTANT VB NOTE: The field accessory was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private accessory_Renamed As Accessory
+		Private _accessory As Accessory
 		'Scenario 1
 		'Specify Lookup Property Data Source Related to the Selected Product
 		'[DataSourceProperty("Product.Accessories")]
@@ -51,65 +48,63 @@ Namespace FilterLookupListView.Module.BusinessObjects
 		<DataSourceProperty("AvailableAccessories")>
 		Public Property Accessory() As Accessory
 			Get
-				Return accessory_Renamed
+				Return _accessory
 			End Get
 			Set(ByVal value As Accessory)
-				SetPropertyValue(NameOf(Accessory), accessory_Renamed, value)
+				SetPropertyValue(NameOf(Accessory), _accessory, value)
 			End Set
 		End Property
 
-		#Region "Scenario 4 - Custom Lookup Property Data Source"
-'INSTANT VB NOTE: The field availableAccessories was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private availableAccessories_Renamed As XPCollection(Of Accessory)
+#Region "Scenario 4 - Custom Lookup Property Data Source"
+		Private _availableAccessories As XPCollection(Of Accessory)
 		<Browsable(False)>
 		Public ReadOnly Property AvailableAccessories() As XPCollection(Of Accessory) ' Prohibits showing the AvailableAccessories collection separately
 			Get
-				If availableAccessories_Renamed Is Nothing Then
+				If _availableAccessories Is Nothing Then
 					' Retrieve all Accessory objects 
-					availableAccessories_Renamed = New XPCollection(Of Accessory)(Session)
+					_availableAccessories = New XPCollection(Of Accessory)(Session)
 					' Filter the retrieved collection according to current conditions 
 					RefreshAvailableAccessories()
 				End If
 				' Return the filtered collection of Accessory objects 
-				Return availableAccessories_Renamed
+				Return _availableAccessories
 			End Get
 		End Property
 		Private Sub RefreshAvailableAccessories()
-			If availableAccessories_Renamed Is Nothing Then
+			If _availableAccessories Is Nothing Then
 				Return
 			End If
 			' Process the situation when the Product is not specified (see the Scenario 3 above) 
 			If Product Is Nothing Then
 				' Show only Global Accessories when the Product is not specified 
-				availableAccessories_Renamed.Criteria = CriteriaOperator.Parse("[IsGlobal] = true")
+				_availableAccessories.Criteria = CriteriaOperator.Parse("[IsGlobal] = true")
 			Else
 				' Leave only the current Product's Accessories in the availableAccessories collection 
-				availableAccessories_Renamed.Criteria = New BinaryOperator("Product", Product)
+				_availableAccessories.Criteria = New BinaryOperator("Product", Product)
 				If IncludeGlobalAccessories = True Then
 					' Add Global Accessories 
 					Dim availableGlobalAccessories As New XPCollection(Of Accessory)(Session)
 					availableGlobalAccessories.Criteria = CriteriaOperator.Parse("[IsGlobal] = true")
-					availableAccessories_Renamed.AddRange(availableGlobalAccessories)
+					_availableAccessories.AddRange(availableGlobalAccessories)
 				End If
 			End If
 			' Set null for the Accessory property to allow an end-user  
 			'to set a new value from the refreshed data source 
 			Accessory = Nothing
 		End Sub
-'INSTANT VB NOTE: The field includeGlobalAccessories was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private includeGlobalAccessories_Renamed As Boolean
+		Private _includeGlobalAccessories As Boolean
 		<ImmediatePostData>
 		Public Property IncludeGlobalAccessories() As Boolean 'Use this attribute to refresh the Accessory
 			Get
-				Return includeGlobalAccessories_Renamed
+				Return _includeGlobalAccessories
 			End Get
 			Set(ByVal value As Boolean)
-				If includeGlobalAccessories_Renamed <> value Then
-					includeGlobalAccessories_Renamed = value
+				If _includeGlobalAccessories <> value Then
+					_includeGlobalAccessories = value
 					If Not IsLoading Then
 						' Refresh the Accessory Property data source                     
 						RefreshAvailableAccessories()
-						SetPropertyValue(NameOf(IncludeGlobalAccessories), includeGlobalAccessories_Renamed, value)
+						SetPropertyValue(NameOf(IncludeGlobalAccessories), _includeGlobalAccessories, value)
 					End If
 				End If
 			End Set

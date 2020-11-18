@@ -8,35 +8,32 @@ Namespace FilterLookupListView.Module.BusinessObjects
 		Public Sub New(ByVal session As Session)
 			MyBase.New(session)
 		End Sub
-'INSTANT VB NOTE: The field accessoryName was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private accessoryName_Renamed As String
+		Private _accessoryName As String
 		Public Property AccessoryName() As String
 			Get
-				Return accessoryName_Renamed
+				Return _accessoryName
 			End Get
 			Set(ByVal value As String)
-				SetPropertyValue(NameOf(AccessoryName), accessoryName_Renamed, value)
+				SetPropertyValue(NameOf(AccessoryName), _accessoryName, value)
 			End Set
 		End Property
-'INSTANT VB NOTE: The field isGlobal was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private isGlobal_Renamed As Boolean
+		Private _isGlobal As Boolean
 		Public Property IsGlobal() As Boolean
 			Get
-				Return isGlobal_Renamed
+				Return _isGlobal
 			End Get
 			Set(ByVal value As Boolean)
-				SetPropertyValue(NameOf(IsGlobal), isGlobal_Renamed, value)
+				SetPropertyValue(NameOf(IsGlobal), _isGlobal, value)
 			End Set
 		End Property
-'INSTANT VB NOTE: The field product was renamed since Visual Basic does not allow fields to have the same name as other class members:
-		Private product_Renamed As Product
+		Private _product As Product
 		<Association("P-To-C")>
 		Public Property Product() As Product
 			Get
-				Return product_Renamed
+				Return _product
 			End Get
 			Set(ByVal value As Product)
-				SetPropertyValue(NameOf(Product), product_Renamed, value)
+				SetPropertyValue(NameOf(Product), _product, value)
 			End Set
 		End Property
 	End Class
