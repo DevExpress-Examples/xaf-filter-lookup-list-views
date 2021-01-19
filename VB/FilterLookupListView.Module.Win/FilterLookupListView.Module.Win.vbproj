@@ -24,7 +24,7 @@
         <EmbeddedResource Remove="bin\**" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="DevExpress.WindowsDesktop.XAF.ExpressApp.Win" Version="20.2.4-ctp" />
+      <PackageReference Include="DevExpress.WindowsDesktop.XAF.ExpressApp.Win" Version="20.2.5-ctp" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\FilterLookupListView.Module\FilterLookupListView.Module.vbproj" />
