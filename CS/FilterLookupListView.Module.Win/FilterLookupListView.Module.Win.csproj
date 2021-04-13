@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Library</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <RootNamespace>FilterLookupListView.Module.Win</RootNamespace>
@@ -13,7 +13,7 @@
         <EmbeddedResource Remove="bin\**" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="DevExpress.WindowsDesktop.XAF.ExpressApp.Win" Version="20.2.5-ctp" />
+      <PackageReference Include="DevExpress.ExpressApp.Win" Version="21.1.2" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\FilterLookupListView.Module\FilterLookupListView.Module.csproj" />
