@@ -24,7 +24,7 @@
         <EmbeddedResource Remove="bin\**" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="DevExpress.ExpressApp.Win" Version="21.1.2" />
+      <PackageReference Include="DevExpress.ExpressApp.Win" Version="21.1.2-beta" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\FilterLookupListView.Module\FilterLookupListView.Module.vbproj" />
