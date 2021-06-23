@@ -13,7 +13,7 @@
         <EmbeddedResource Remove="bin\**" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="DevExpress.ExpressApp.Win" Version="21.1.3" />
+      <PackageReference Include="DevExpress.ExpressApp.Win" Version="21.1.4" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\FilterLookupListView.Module\FilterLookupListView.Module.csproj" />
