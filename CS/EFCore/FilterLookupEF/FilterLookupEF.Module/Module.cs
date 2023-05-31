@@ -5,10 +5,11 @@ using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.ExpressApp.Editors;
-using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
+using FilterLookup.Module.DatabaseUpdate;
+using DevExpress.ExpressApp.Updating;
 
 namespace FilterLookupEF.Module;
 
@@ -22,7 +23,7 @@ public sealed class FilterLookupEFModule : ModuleBase {
 		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule));
     }
     public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
-        ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
+        ModuleUpdater updater = new FilterLookup.Module.DatabaseUpdate.Updater(objectSpace, versionFromDB);
         return new ModuleUpdater[] { updater };
     }
     public override void Setup(XafApplication application) {

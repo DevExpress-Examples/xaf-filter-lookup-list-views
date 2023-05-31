@@ -20,4 +20,7 @@
     <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="22.2.6" />
     <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="22.2.6" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilterLookupEF.Module\FilterLookupEF.Module.csproj" />
+  </ItemGroup>
 </Project>

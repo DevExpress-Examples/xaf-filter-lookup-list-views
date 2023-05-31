@@ -5,6 +5,7 @@ using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.ExpressApp.Design;
 using DevExpress.ExpressApp.EFCore.DesignTime;
+using FilterLookupListView.Module.BusinessObjects;
 
 namespace FilterLookupEF.Module.BusinessObjects;
 
@@ -34,10 +35,13 @@ public class FilterLookupEFDesignTimeDbContextFactory : IDesignTimeDbContextFact
 public class FilterLookupEFEFCoreDbContext : DbContext {
 	public FilterLookupEFEFCoreDbContext(DbContextOptions<FilterLookupEFEFCoreDbContext> options) : base(options) {
 	}
-	//public DbSet<ModuleInfo> ModulesInfo { get; set; }
+    public DbSet<Accessory> Accessories { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
         modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.ChangingAndChangedNotificationsWithOriginalValues);
+        modelBuilder.UsePropertyAccessMode(PropertyAccessMode.FieldDuringConstruction);
     }
 }
