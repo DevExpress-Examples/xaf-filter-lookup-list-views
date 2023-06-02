@@ -8,8 +8,8 @@
 
 * [Accessory.cs](CS/EFCore/FilterLookupEF/FilterLookupEF.Module/BusinessObjects/Accessory.cs)
 * [Order.cs](CS/EFCore/FilterLookupEF/FilterLookupEF.Module/BusinessObjects/Order.cs) 
-* [Product.cs](CS/EFCore/FilterLookupEF/FilterLookupEF.Module/BusinessObjects)
-/Product.cs) 
+* [Product.cs](CS/EFCore/FilterLookupEF/FilterLookupEF.Module/BusinessObjects/Product.cs)
+* [Product.cs](CS\EFCore\FilterLookupEF\FilterLookupEF.Module\BusinessObjects\Product.cs)
 <!-- default file list end -->
 # How to Filter Lookup List Views
 
