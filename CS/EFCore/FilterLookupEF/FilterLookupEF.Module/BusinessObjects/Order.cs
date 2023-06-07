@@ -36,15 +36,12 @@ namespace FilterLookupListView.Module.BusinessObjects {
         public virtual Accessory Accessory { get; set; }
 
         #region Scenario 4 - Custom Lookup Property Data Source
-        private ObservableCollection<Accessory> availableAccessories;
+        private readonly ObservableCollection<Accessory> availableAccessories = new ObservableCollection<Accessory>();
 
         [Browsable(false)] // Prohibits showing the AvailableAccessories collection separately 
         public virtual IList<Accessory> AvailableAccessories {
             get {
-                if (availableAccessories.Count==0) {
-                    // Retrieve all Accessory objects 
-                    var os = ((IObjectSpaceLink)this).ObjectSpace;
-                    availableAccessories =new ObservableCollection<Accessory>(os.GetObjects<Accessory>());
+                if (availableAccessories.Count == 0) {
                     // Filter the retrieved collection according to current conditions 
                     RefreshAvailableAccessories();
                 }
@@ -53,30 +50,37 @@ namespace FilterLookupListView.Module.BusinessObjects {
             }
         }
         private void RefreshAvailableAccessories() {
-            if (availableAccessories == null)
-                return;
+            var os = ((IObjectSpaceLink)this).ObjectSpace;
+            IQueryable<Accessory> available;
             // Process the situation when the Product is not specified (see the Scenario 3 above) 
             if (Product == null) {
                 // Show only Global Accessories when the Product is not specified 
-                availableAccessories = new ObservableCollection<Accessory>(availableAccessories.Where(x => x.IsGlobal == true));
+                available = os.GetObjectsQuery<Accessory>().Where(t => t.IsGlobal == true);
             } else {
                 // Leave only the current Product's Accessories in the availableAccessories collection 
-                availableAccessories = new ObservableCollection<Accessory>(availableAccessories.Where(x => x.Product == Product));
-                if (IncludeGlobalAccessories == true) {
-                    // Add Global Accessories 
-                    var os = ((IObjectSpaceLink)this).ObjectSpace;
-                    var availableGlobalAccessories = os.GetObjects<Accessory>(CriteriaOperator.FromLambda<Accessory>(x => x.IsGlobal == true));
-                    foreach (var accessory in availableGlobalAccessories) {
-                        availableAccessories.Add(accessory);
-                    }
+                if (IncludeGlobalAccessories == false) {
+                    available = os.GetObjectsQuery<Accessory>().Where(t => t.Product == Product);
+                } else {
+                    available = os.GetObjectsQuery<Accessory>().Where(t => t.Product == Product || t.IsGlobal == true);
                 }
             }
+
+            RefreshAvailableAccessories(available);
+
             // Set null for the Accessory property to allow an end-user  
             //to set a new value from the refreshed data source 
             Accessory = null;
-
-        
         }
+
+        private void RefreshAvailableAccessories(IEnumerable<Accessory> accessories) {
+            while (availableAccessories.Count > 0) {
+                availableAccessories.RemoveAt(availableAccessories.Count - 1);
+            }
+            foreach (var accesoire in accessories) {
+                availableAccessories.Add(accesoire);
+            }
+        }
+
         [ImmediatePostData] //Use this attribute to refresh the Accessory  
         public virtual bool IncludeGlobalAccessories { get; set; }
 
