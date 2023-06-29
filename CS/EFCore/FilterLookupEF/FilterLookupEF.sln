@@ -3,12 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterLookupEF.Blazor.Server", "FilterLookupEF.Blazor.Server\FilterLookupEF.Blazor.Server.csproj", "{F7D9276E-6811-4975-A7EC-F124DECBBB87}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterLookupEF.Module", "FilterLookupEF.Module\FilterLookupEF.Module.csproj", "{4C0C1C6D-90CF-40C2-B38D-CD8040FC629A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterLookupEF.Win", "FilterLookupEF.Win\FilterLookupEF.Win.csproj", "{E8C711DC-9913-4F9F-A6EE-0C702929D132}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterLookupEF.Blazor.Server", "FilterLookupEF.Blazor.Server\FilterLookupEF.Blazor.Server.csproj", "{F7D9276E-6811-4975-A7EC-F124DECBBB87}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
