@@ -18,9 +18,6 @@ namespace FilterLookupListView.Module.BusinessObjects {
             get { return product; }
             set {
                 SetPropertyValue(nameof(Product), ref product, value);
-                //Scenario 4 - Custom Lookup Property Data Source
-                // Refresh the Accessory Property data source 
-                RefreshAvailableAccessories();
             }
         }
         private Accessory accessory;
@@ -35,7 +32,7 @@ namespace FilterLookupListView.Module.BusinessObjects {
         //[DataSourceProperty("Product.Accessories", DataSourcePropertyIsNullMode.CustomCriteria, "IsGlobal = true")]
         //Scenario 4
         //Custom Lookup Property Data Source
-        [DataSourceProperty("AvailableAccessories")]
+        [DataSourceProperty("AvailableAccessories", "Product", "IncludeGlobalAccessories")]
         public Accessory Accessory {
             get { return accessory; }
             set { SetPropertyValue(nameof(Accessory), ref accessory, value); }
@@ -49,9 +46,9 @@ namespace FilterLookupListView.Module.BusinessObjects {
                 if(availableAccessories == null) {
                     // Retrieve all Accessory objects 
                     availableAccessories = new XPCollection<Accessory>(Session);
-                    // Filter the retrieved collection according to current conditions 
-                    RefreshAvailableAccessories();
                 }
+                // Filter the retrieved collection according to current conditions 
+                RefreshAvailableAccessories();
                 // Return the filtered collection of Accessory objects 
                 return availableAccessories;
             }
@@ -76,11 +73,10 @@ namespace FilterLookupListView.Module.BusinessObjects {
                 }
             }
             // Set null for the Accessory property to allow an end-user  
-            //to set a new value from the refreshed data source 
+            // to set a new value from the refreshed data source 
             Accessory = null;
         }
         private bool includeGlobalAccessories;
-        [ImmediatePostData] //Use this attribute to refresh the Accessory  
         public bool IncludeGlobalAccessories {
             get {
                 return includeGlobalAccessories;
@@ -89,8 +85,6 @@ namespace FilterLookupListView.Module.BusinessObjects {
                 if(includeGlobalAccessories != value) {
                     includeGlobalAccessories = value;
                     if(!IsLoading) {
-                        // Refresh the Accessory Property data source                     
-                        RefreshAvailableAccessories();
                         SetPropertyValue(nameof(IncludeGlobalAccessories), ref includeGlobalAccessories, value);
                     }
                 }
