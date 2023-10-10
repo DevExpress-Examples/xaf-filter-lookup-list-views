@@ -6,7 +6,7 @@
 
 # How to Filter Lookup List Views
 
-This example demonstrates how to display a collection of a particular reference property in a drop-down window of the Lookup Property Editor that displays another reference property. For details, refer to the following topic in XAF documentation: [How to: Filter Lookup List Views](http://documentation.devexpress.com/#Xaf/CustomDocument2681).
+This example demonstrates how to filter items displayed in a Lookup Property Editor's drop-down window based on values of other Property Editors located in the same Detail View. For details, refer to the following topic in XAF documentation: [How to: Filter Lookup List Views](http://documentation.devexpress.com/#Xaf/CustomDocument2681).
 
 ## Files to Review
 
