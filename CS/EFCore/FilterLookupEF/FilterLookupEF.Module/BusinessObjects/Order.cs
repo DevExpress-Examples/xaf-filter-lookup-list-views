@@ -26,7 +26,7 @@ namespace FilterLookupListView.Module.BusinessObjects {
 
         // Specify that AvailableAccessories must be used as a data source property,
         // and the Product and IncludeGlobalAccessories properties are used in calculations.
-        [DataSourceProperty("AvailableAccessories", "Product", "IncludeGlobalAccessories")]
+        [DataSourceProperty(nameof(AvailableAccessories), nameof(Product), nameof(IncludeGlobalAccessories))]
         public virtual Accessory Accessory { get; set; }
 
         #region Scenario 4 - Custom Lookup Property Data Source

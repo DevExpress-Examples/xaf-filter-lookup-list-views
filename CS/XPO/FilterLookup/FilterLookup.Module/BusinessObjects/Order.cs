@@ -32,7 +32,7 @@ namespace FilterLookupListView.Module.BusinessObjects {
         //[DataSourceProperty("Product.Accessories", DataSourcePropertyIsNullMode.CustomCriteria, "IsGlobal = true")]
         //Scenario 4
         //Custom Lookup Property Data Source
-        [DataSourceProperty("AvailableAccessories", "Product", "IncludeGlobalAccessories")]
+        [DataSourceProperty(nameof(AvailableAccessories), nameof(Product), nameof(IncludeGlobalAccessories))]
         public Accessory Accessory {
             get { return accessory; }
             set { SetPropertyValue(nameof(Accessory), ref accessory, value); }
