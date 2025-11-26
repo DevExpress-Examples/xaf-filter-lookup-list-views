@@ -20,7 +20,6 @@ public sealed class FilterLookupEFModule : ModuleBase {
 		// FilterLookupEFModule
 		// 
 		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
-		RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule));
     }
     public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
         ModuleUpdater updater = new FilterLookup.Module.DatabaseUpdate.Updater(objectSpace, versionFromDB);
