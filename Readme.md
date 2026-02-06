@@ -20,7 +20,7 @@ This example demonstrates how to filter items displayed in a Lookup Property Edi
 * [How to: Filter Lookup List Views](http://documentation.devexpress.com/#Xaf/CustomDocument2681)
 * [DataSourcePropertyAttribute](https://docs.devexpress.com/eXpressAppFramework/DevExpress.Persistent.Base.DataSourcePropertyAttribute)
 * [DataSourcePropertyAttribute.UsedProperties](https://docs.devexpress.com/eXpressAppFramework/DevExpress.Persistent.Base.DataSourcePropertyAttribute.UsedProperties)
-* [Reference (Foreign Key, Complex Type) Properties](https://docs.devexpress.com/eXpressAppFramework/113572/business-model-design-orm/data-types-supported-by-built-in-editors/reference-foreign-key-complex-type-properties#refresh-the-aspxgridlookuppropertyeditors-data-source)
+* [Reference (Foreign Key, Complex Type) Properties](https://docs.devexpress.com/eXpressAppFramework/113572/business-model-design-orm/data-types-supported-by-built-in-editors/reference-foreign-key-complex-type-properties)
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
 
@@ -28,3 +28,4 @@ This example demonstrates how to filter items displayed in a Lookup Property Edi
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
