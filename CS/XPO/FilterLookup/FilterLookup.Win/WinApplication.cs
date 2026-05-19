@@ -14,7 +14,6 @@ public class FilterLookupWindowsFormsApplication : WinApplication {
 		SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         ApplicationName = "FilterLookup";
         CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-        UseOldTemplates = false;
         DatabaseVersionMismatch += FilterLookupWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += FilterLookupWindowsFormsApplication_CustomizeLanguagesList;
     }
